@@ -1,0 +1,3 @@
+target remote:26000 \
+file kernel/kernel \
+set disassemble-next-line on

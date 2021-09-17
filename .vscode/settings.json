@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "cmath": "c",
+        "*.tcc": "c",
+        "user.h": "c",
+        "fs.h": "c",
+        "cstdio": "c",
+        "limits": "c"
+    }
+}

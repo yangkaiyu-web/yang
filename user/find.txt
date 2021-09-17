@@ -1,0 +1,1486 @@
+
+_find：     文件格式 elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <fmtname>:
+fmtname():
+/home/one/xv6-labs-2020/user/find.c:8
+   0:	7139                	addi	sp,sp,-64
+   2:	fc06                	sd	ra,56(sp)
+   4:	f822                	sd	s0,48(sp)
+   6:	f426                	sd	s1,40(sp)
+   8:	0080                	addi	s0,sp,64
+   a:	fca43423          	sd	a0,-56(s0)
+/home/one/xv6-labs-2020/user/find.c:13
+   e:	fc843503          	ld	a0,-56(s0)
+  12:	00000097          	auipc	ra,0x0
+  16:	3ca080e7          	jalr	970(ra) # 3dc <strlen>
+  1a:	87aa                	mv	a5,a0
+  1c:	2781                	sext.w	a5,a5
+  1e:	1782                	slli	a5,a5,0x20
+  20:	9381                	srli	a5,a5,0x20
+  22:	fc843703          	ld	a4,-56(s0)
+  26:	97ba                	add	a5,a5,a4
+  28:	fcf43c23          	sd	a5,-40(s0)
+  2c:	a031                	j	38 <fmtname+0x38>
+/home/one/xv6-labs-2020/user/find.c:13 (discriminator 4)
+  2e:	fd843783          	ld	a5,-40(s0)
+  32:	17fd                	addi	a5,a5,-1
+  34:	fcf43c23          	sd	a5,-40(s0)
+/home/one/xv6-labs-2020/user/find.c:13 (discriminator 1)
+  38:	fd843703          	ld	a4,-40(s0)
+  3c:	fc843783          	ld	a5,-56(s0)
+  40:	00f76b63          	bltu	a4,a5,56 <fmtname+0x56>
+/home/one/xv6-labs-2020/user/find.c:13 (discriminator 3)
+  44:	fd843783          	ld	a5,-40(s0)
+  48:	0007c783          	lbu	a5,0(a5)
+  4c:	873e                	mv	a4,a5
+  4e:	02f00793          	li	a5,47
+  52:	fcf71ee3          	bne	a4,a5,2e <fmtname+0x2e>
+/home/one/xv6-labs-2020/user/find.c:15
+  56:	fd843783          	ld	a5,-40(s0)
+  5a:	0785                	addi	a5,a5,1
+  5c:	fcf43c23          	sd	a5,-40(s0)
+/home/one/xv6-labs-2020/user/find.c:18
+  60:	fd843503          	ld	a0,-40(s0)
+  64:	00000097          	auipc	ra,0x0
+  68:	378080e7          	jalr	888(ra) # 3dc <strlen>
+  6c:	87aa                	mv	a5,a0
+  6e:	2781                	sext.w	a5,a5
+  70:	873e                	mv	a4,a5
+  72:	47b5                	li	a5,13
+  74:	00e7f563          	bgeu	a5,a4,7e <fmtname+0x7e>
+/home/one/xv6-labs-2020/user/find.c:19
+  78:	fd843783          	ld	a5,-40(s0)
+  7c:	a8b5                	j	f8 <fmtname+0xf8>
+/home/one/xv6-labs-2020/user/find.c:20
+  7e:	fd843503          	ld	a0,-40(s0)
+  82:	00000097          	auipc	ra,0x0
+  86:	35a080e7          	jalr	858(ra) # 3dc <strlen>
+  8a:	87aa                	mv	a5,a0
+  8c:	2781                	sext.w	a5,a5
+  8e:	2781                	sext.w	a5,a5
+  90:	863e                	mv	a2,a5
+  92:	fd843583          	ld	a1,-40(s0)
+  96:	00001517          	auipc	a0,0x1
+  9a:	b1a50513          	addi	a0,a0,-1254 # bb0 <buf.1127>
+  9e:	00000097          	auipc	ra,0x0
+  a2:	4bc080e7          	jalr	1212(ra) # 55a <memmove>
+/home/one/xv6-labs-2020/user/find.c:21
+  a6:	fd843503          	ld	a0,-40(s0)
+  aa:	00000097          	auipc	ra,0x0
+  ae:	332080e7          	jalr	818(ra) # 3dc <strlen>
+  b2:	87aa                	mv	a5,a0
+  b4:	2781                	sext.w	a5,a5
+  b6:	02079713          	slli	a4,a5,0x20
+  ba:	9301                	srli	a4,a4,0x20
+  bc:	00001797          	auipc	a5,0x1
+  c0:	af478793          	addi	a5,a5,-1292 # bb0 <buf.1127>
+  c4:	00f704b3          	add	s1,a4,a5
+  c8:	fd843503          	ld	a0,-40(s0)
+  cc:	00000097          	auipc	ra,0x0
+  d0:	310080e7          	jalr	784(ra) # 3dc <strlen>
+  d4:	87aa                	mv	a5,a0
+  d6:	2781                	sext.w	a5,a5
+  d8:	4739                	li	a4,14
+  da:	40f707bb          	subw	a5,a4,a5
+  de:	2781                	sext.w	a5,a5
+  e0:	863e                	mv	a2,a5
+  e2:	02000593          	li	a1,32
+  e6:	8526                	mv	a0,s1
+  e8:	00000097          	auipc	ra,0x0
+  ec:	31e080e7          	jalr	798(ra) # 406 <memset>
+/home/one/xv6-labs-2020/user/find.c:22
+  f0:	00001797          	auipc	a5,0x1
+  f4:	ac078793          	addi	a5,a5,-1344 # bb0 <buf.1127>
+/home/one/xv6-labs-2020/user/find.c:23
+  f8:	853e                	mv	a0,a5
+  fa:	70e2                	ld	ra,56(sp)
+  fc:	7442                	ld	s0,48(sp)
+  fe:	74a2                	ld	s1,40(sp)
+ 100:	6121                	addi	sp,sp,64
+ 102:	8082                	ret
+
+0000000000000104 <find>:
+find():
+/home/one/xv6-labs-2020/user/find.c:26
+ 104:	da010113          	addi	sp,sp,-608
+ 108:	24113c23          	sd	ra,600(sp)
+ 10c:	24813823          	sd	s0,592(sp)
+ 110:	1480                	addi	s0,sp,608
+ 112:	daa43423          	sd	a0,-600(s0)
+ 116:	dab43023          	sd	a1,-608(s0)
+/home/one/xv6-labs-2020/user/find.c:32
+ 11a:	4581                	li	a1,0
+ 11c:	da843503          	ld	a0,-600(s0)
+ 120:	00000097          	auipc	ra,0x0
+ 124:	53c080e7          	jalr	1340(ra) # 65c <open>
+ 128:	87aa                	mv	a5,a0
+ 12a:	fef42623          	sw	a5,-20(s0)
+ 12e:	fec42783          	lw	a5,-20(s0)
+ 132:	2781                	sext.w	a5,a5
+ 134:	0007de63          	bgez	a5,150 <find+0x4c>
+/home/one/xv6-labs-2020/user/find.c:34
+ 138:	da843603          	ld	a2,-600(s0)
+ 13c:	00001597          	auipc	a1,0x1
+ 140:	9fc58593          	addi	a1,a1,-1540 # b38 <malloc+0xe6>
+ 144:	4509                	li	a0,2
+ 146:	00001097          	auipc	ra,0x1
+ 14a:	81e080e7          	jalr	-2018(ra) # 964 <fprintf>
+/home/one/xv6-labs-2020/user/find.c:35
+ 14e:	aae5                	j	346 <find+0x242>
+/home/one/xv6-labs-2020/user/find.c:44
+ 150:	da843503          	ld	a0,-600(s0)
+ 154:	00000097          	auipc	ra,0x0
+ 158:	288080e7          	jalr	648(ra) # 3dc <strlen>
+ 15c:	87aa                	mv	a5,a0
+ 15e:	2781                	sext.w	a5,a5
+ 160:	27c1                	addiw	a5,a5,16
+ 162:	2781                	sext.w	a5,a5
+ 164:	873e                	mv	a4,a5
+ 166:	20000793          	li	a5,512
+ 16a:	00e7fb63          	bgeu	a5,a4,180 <find+0x7c>
+/home/one/xv6-labs-2020/user/find.c:46
+ 16e:	00001517          	auipc	a0,0x1
+ 172:	9e250513          	addi	a0,a0,-1566 # b50 <malloc+0xfe>
+ 176:	00001097          	auipc	ra,0x1
+ 17a:	81c080e7          	jalr	-2020(ra) # 992 <printf>
+/home/one/xv6-labs-2020/user/find.c:47
+ 17e:	a2e1                	j	346 <find+0x242>
+/home/one/xv6-labs-2020/user/find.c:49
+ 180:	dd840793          	addi	a5,s0,-552
+ 184:	da843583          	ld	a1,-600(s0)
+ 188:	853e                	mv	a0,a5
+ 18a:	00000097          	auipc	ra,0x0
+ 18e:	202080e7          	jalr	514(ra) # 38c <strcpy>
+/home/one/xv6-labs-2020/user/find.c:50
+ 192:	dd840793          	addi	a5,s0,-552
+ 196:	853e                	mv	a0,a5
+ 198:	00000097          	auipc	ra,0x0
+ 19c:	244080e7          	jalr	580(ra) # 3dc <strlen>
+ 1a0:	87aa                	mv	a5,a0
+ 1a2:	2781                	sext.w	a5,a5
+ 1a4:	1782                	slli	a5,a5,0x20
+ 1a6:	9381                	srli	a5,a5,0x20
+ 1a8:	dd840713          	addi	a4,s0,-552
+ 1ac:	97ba                	add	a5,a5,a4
+ 1ae:	fef43023          	sd	a5,-32(s0)
+/home/one/xv6-labs-2020/user/find.c:51
+ 1b2:	fe043783          	ld	a5,-32(s0)
+ 1b6:	00178713          	addi	a4,a5,1
+ 1ba:	fee43023          	sd	a4,-32(s0)
+ 1be:	02f00713          	li	a4,47
+ 1c2:	00e78023          	sb	a4,0(a5)
+/home/one/xv6-labs-2020/user/find.c:52
+ 1c6:	aa89                	j	318 <find+0x214>
+/home/one/xv6-labs-2020/user/find.c:55
+ 1c8:	dc845783          	lhu	a5,-568(s0)
+ 1cc:	e391                	bnez	a5,1d0 <find+0xcc>
+/home/one/xv6-labs-2020/user/find.c:56
+ 1ce:	a2a9                	j	318 <find+0x214>
+/home/one/xv6-labs-2020/user/find.c:57
+ 1d0:	dc840793          	addi	a5,s0,-568
+ 1d4:	0789                	addi	a5,a5,2
+ 1d6:	4639                	li	a2,14
+ 1d8:	85be                	mv	a1,a5
+ 1da:	fe043503          	ld	a0,-32(s0)
+ 1de:	00000097          	auipc	ra,0x0
+ 1e2:	37c080e7          	jalr	892(ra) # 55a <memmove>
+/home/one/xv6-labs-2020/user/find.c:58
+ 1e6:	fe043783          	ld	a5,-32(s0)
+ 1ea:	07b9                	addi	a5,a5,14
+ 1ec:	00078023          	sb	zero,0(a5)
+/home/one/xv6-labs-2020/user/find.c:61
+ 1f0:	dd840793          	addi	a5,s0,-552
+ 1f4:	4581                	li	a1,0
+ 1f6:	853e                	mv	a0,a5
+ 1f8:	00000097          	auipc	ra,0x0
+ 1fc:	464080e7          	jalr	1124(ra) # 65c <open>
+ 200:	87aa                	mv	a5,a0
+ 202:	fcf42e23          	sw	a5,-36(s0)
+ 206:	fdc42783          	lw	a5,-36(s0)
+ 20a:	2781                	sext.w	a5,a5
+ 20c:	0007df63          	bgez	a5,22a <find+0x126>
+/home/one/xv6-labs-2020/user/find.c:63
+ 210:	dd840793          	addi	a5,s0,-552
+ 214:	863e                	mv	a2,a5
+ 216:	00001597          	auipc	a1,0x1
+ 21a:	92258593          	addi	a1,a1,-1758 # b38 <malloc+0xe6>
+ 21e:	4509                	li	a0,2
+ 220:	00000097          	auipc	ra,0x0
+ 224:	744080e7          	jalr	1860(ra) # 964 <fprintf>
+/home/one/xv6-labs-2020/user/find.c:64
+ 228:	aa39                	j	346 <find+0x242>
+/home/one/xv6-labs-2020/user/find.c:67
+ 22a:	db040713          	addi	a4,s0,-592
+ 22e:	fdc42783          	lw	a5,-36(s0)
+ 232:	85ba                	mv	a1,a4
+ 234:	853e                	mv	a0,a5
+ 236:	00000097          	auipc	ra,0x0
+ 23a:	43e080e7          	jalr	1086(ra) # 674 <fstat>
+ 23e:	87aa                	mv	a5,a0
+ 240:	0207d663          	bgez	a5,26c <find+0x168>
+/home/one/xv6-labs-2020/user/find.c:69
+ 244:	dd840793          	addi	a5,s0,-552
+ 248:	863e                	mv	a2,a5
+ 24a:	00001597          	auipc	a1,0x1
+ 24e:	91e58593          	addi	a1,a1,-1762 # b68 <malloc+0x116>
+ 252:	4509                	li	a0,2
+ 254:	00000097          	auipc	ra,0x0
+ 258:	710080e7          	jalr	1808(ra) # 964 <fprintf>
+/home/one/xv6-labs-2020/user/find.c:70
+ 25c:	fdc42783          	lw	a5,-36(s0)
+ 260:	853e                	mv	a0,a5
+ 262:	00000097          	auipc	ra,0x0
+ 266:	3e2080e7          	jalr	994(ra) # 644 <close>
+/home/one/xv6-labs-2020/user/find.c:71
+ 26a:	a8f1                	j	346 <find+0x242>
+/home/one/xv6-labs-2020/user/find.c:74
+ 26c:	db841783          	lh	a5,-584(s0)
+ 270:	0007871b          	sext.w	a4,a5
+ 274:	86ba                	mv	a3,a4
+ 276:	4785                	li	a5,1
+ 278:	00f68663          	beq	a3,a5,284 <find+0x180>
+ 27c:	4789                	li	a5,2
+ 27e:	00f70d63          	beq	a4,a5,298 <find+0x194>
+/home/one/xv6-labs-2020/user/find.c:90
+ 282:	a061                	j	30a <find+0x206>
+/home/one/xv6-labs-2020/user/find.c:77
+ 284:	dd840793          	addi	a5,s0,-552
+ 288:	da043583          	ld	a1,-608(s0)
+ 28c:	853e                	mv	a0,a5
+ 28e:	00000097          	auipc	ra,0x0
+ 292:	e76080e7          	jalr	-394(ra) # 104 <find>
+/home/one/xv6-labs-2020/user/find.c:78
+ 296:	a895                	j	30a <find+0x206>
+/home/one/xv6-labs-2020/user/find.c:80
+ 298:	db040713          	addi	a4,s0,-592
+ 29c:	dd840793          	addi	a5,s0,-552
+ 2a0:	85ba                	mv	a1,a4
+ 2a2:	853e                	mv	a0,a5
+ 2a4:	00000097          	auipc	ra,0x0
+ 2a8:	226080e7          	jalr	550(ra) # 4ca <stat>
+ 2ac:	87aa                	mv	a5,a0
+ 2ae:	0007de63          	bgez	a5,2ca <find+0x1c6>
+/home/one/xv6-labs-2020/user/find.c:82
+ 2b2:	dd840793          	addi	a5,s0,-552
+ 2b6:	85be                	mv	a1,a5
+ 2b8:	00001517          	auipc	a0,0x1
+ 2bc:	8b050513          	addi	a0,a0,-1872 # b68 <malloc+0x116>
+ 2c0:	00000097          	auipc	ra,0x0
+ 2c4:	6d2080e7          	jalr	1746(ra) # 992 <printf>
+/home/one/xv6-labs-2020/user/find.c:83
+ 2c8:	a881                	j	318 <find+0x214>
+/home/one/xv6-labs-2020/user/find.c:85
+ 2ca:	dc840793          	addi	a5,s0,-568
+ 2ce:	0789                	addi	a5,a5,2
+ 2d0:	85be                	mv	a1,a5
+ 2d2:	da043503          	ld	a0,-608(s0)
+ 2d6:	00000097          	auipc	ra,0x0
+ 2da:	0d2080e7          	jalr	210(ra) # 3a8 <strcmp>
+ 2de:	87aa                	mv	a5,a0
+ 2e0:	e785                	bnez	a5,308 <find+0x204>
+/home/one/xv6-labs-2020/user/find.c:86
+ 2e2:	dd840793          	addi	a5,s0,-552
+ 2e6:	853e                	mv	a0,a5
+ 2e8:	00000097          	auipc	ra,0x0
+ 2ec:	d18080e7          	jalr	-744(ra) # 0 <fmtname>
+ 2f0:	87aa                	mv	a5,a0
+ 2f2:	863e                	mv	a2,a5
+ 2f4:	da843583          	ld	a1,-600(s0)
+ 2f8:	00001517          	auipc	a0,0x1
+ 2fc:	88850513          	addi	a0,a0,-1912 # b80 <malloc+0x12e>
+ 300:	00000097          	auipc	ra,0x0
+ 304:	692080e7          	jalr	1682(ra) # 992 <printf>
+/home/one/xv6-labs-2020/user/find.c:87
+ 308:	0001                	nop
+/home/one/xv6-labs-2020/user/find.c:92
+ 30a:	fdc42783          	lw	a5,-36(s0)
+ 30e:	853e                	mv	a0,a5
+ 310:	00000097          	auipc	ra,0x0
+ 314:	334080e7          	jalr	820(ra) # 644 <close>
+/home/one/xv6-labs-2020/user/find.c:52
+ 318:	dc840713          	addi	a4,s0,-568
+ 31c:	fec42783          	lw	a5,-20(s0)
+ 320:	4641                	li	a2,16
+ 322:	85ba                	mv	a1,a4
+ 324:	853e                	mv	a0,a5
+ 326:	00000097          	auipc	ra,0x0
+ 32a:	30e080e7          	jalr	782(ra) # 634 <read>
+ 32e:	87aa                	mv	a5,a0
+ 330:	873e                	mv	a4,a5
+ 332:	47c1                	li	a5,16
+ 334:	e8f70ae3          	beq	a4,a5,1c8 <find+0xc4>
+/home/one/xv6-labs-2020/user/find.c:94
+ 338:	fec42783          	lw	a5,-20(s0)
+ 33c:	853e                	mv	a0,a5
+ 33e:	00000097          	auipc	ra,0x0
+ 342:	306080e7          	jalr	774(ra) # 644 <close>
+/home/one/xv6-labs-2020/user/find.c:95
+ 346:	25813083          	ld	ra,600(sp)
+ 34a:	25013403          	ld	s0,592(sp)
+ 34e:	26010113          	addi	sp,sp,608
+ 352:	8082                	ret
+
+0000000000000354 <main>:
+main():
+/home/one/xv6-labs-2020/user/find.c:98
+ 354:	1101                	addi	sp,sp,-32
+ 356:	ec06                	sd	ra,24(sp)
+ 358:	e822                	sd	s0,16(sp)
+ 35a:	1000                	addi	s0,sp,32
+ 35c:	87aa                	mv	a5,a0
+ 35e:	feb43023          	sd	a1,-32(s0)
+ 362:	fef42623          	sw	a5,-20(s0)
+/home/one/xv6-labs-2020/user/find.c:99
+ 366:	fe043783          	ld	a5,-32(s0)
+ 36a:	07a1                	addi	a5,a5,8
+ 36c:	6398                	ld	a4,0(a5)
+ 36e:	fe043783          	ld	a5,-32(s0)
+ 372:	07c1                	addi	a5,a5,16
+ 374:	639c                	ld	a5,0(a5)
+ 376:	85be                	mv	a1,a5
+ 378:	853a                	mv	a0,a4
+ 37a:	00000097          	auipc	ra,0x0
+ 37e:	d8a080e7          	jalr	-630(ra) # 104 <find>
+/home/one/xv6-labs-2020/user/find.c:100
+ 382:	4501                	li	a0,0
+ 384:	00000097          	auipc	ra,0x0
+ 388:	298080e7          	jalr	664(ra) # 61c <exit>
+
+000000000000038c <strcpy>:
+strcpy():
+/home/one/xv6-labs-2020/user/ulib.c:8
+ 38c:	1141                	addi	sp,sp,-16
+ 38e:	e422                	sd	s0,8(sp)
+ 390:	0800                	addi	s0,sp,16
+/home/one/xv6-labs-2020/user/ulib.c:12
+ 392:	87aa                	mv	a5,a0
+/home/one/xv6-labs-2020/user/ulib.c:12 (discriminator 1)
+ 394:	0585                	addi	a1,a1,1
+ 396:	0785                	addi	a5,a5,1
+ 398:	fff5c703          	lbu	a4,-1(a1)
+ 39c:	fee78fa3          	sb	a4,-1(a5)
+ 3a0:	fb75                	bnez	a4,394 <strcpy+0x8>
+/home/one/xv6-labs-2020/user/ulib.c:15
+ 3a2:	6422                	ld	s0,8(sp)
+ 3a4:	0141                	addi	sp,sp,16
+ 3a6:	8082                	ret
+
+00000000000003a8 <strcmp>:
+strcmp():
+/home/one/xv6-labs-2020/user/ulib.c:19
+ 3a8:	1141                	addi	sp,sp,-16
+ 3aa:	e422                	sd	s0,8(sp)
+ 3ac:	0800                	addi	s0,sp,16
+/home/one/xv6-labs-2020/user/ulib.c:20
+ 3ae:	00054783          	lbu	a5,0(a0)
+ 3b2:	cf91                	beqz	a5,3ce <strcmp+0x26>
+ 3b4:	0005c703          	lbu	a4,0(a1)
+ 3b8:	00f71b63          	bne	a4,a5,3ce <strcmp+0x26>
+/home/one/xv6-labs-2020/user/ulib.c:21
+ 3bc:	0505                	addi	a0,a0,1
+ 3be:	0585                	addi	a1,a1,1
+/home/one/xv6-labs-2020/user/ulib.c:20
+ 3c0:	00054783          	lbu	a5,0(a0)
+ 3c4:	c789                	beqz	a5,3ce <strcmp+0x26>
+/home/one/xv6-labs-2020/user/ulib.c:20 (discriminator 1)
+ 3c6:	0005c703          	lbu	a4,0(a1)
+ 3ca:	fef709e3          	beq	a4,a5,3bc <strcmp+0x14>
+/home/one/xv6-labs-2020/user/ulib.c:22
+ 3ce:	0005c503          	lbu	a0,0(a1)
+/home/one/xv6-labs-2020/user/ulib.c:23
+ 3d2:	40a7853b          	subw	a0,a5,a0
+ 3d6:	6422                	ld	s0,8(sp)
+ 3d8:	0141                	addi	sp,sp,16
+ 3da:	8082                	ret
+
+00000000000003dc <strlen>:
+strlen():
+/home/one/xv6-labs-2020/user/ulib.c:27
+ 3dc:	1141                	addi	sp,sp,-16
+ 3de:	e422                	sd	s0,8(sp)
+ 3e0:	0800                	addi	s0,sp,16
+/home/one/xv6-labs-2020/user/ulib.c:30
+ 3e2:	00054783          	lbu	a5,0(a0)
+ 3e6:	cf91                	beqz	a5,402 <strlen+0x26>
+ 3e8:	0505                	addi	a0,a0,1
+ 3ea:	87aa                	mv	a5,a0
+ 3ec:	4685                	li	a3,1
+ 3ee:	9e89                	subw	a3,a3,a0
+/home/one/xv6-labs-2020/user/ulib.c:31 (discriminator 3)
+ 3f0:	00f6853b          	addw	a0,a3,a5
+ 3f4:	0785                	addi	a5,a5,1
+/home/one/xv6-labs-2020/user/ulib.c:30 (discriminator 3)
+ 3f6:	fff7c703          	lbu	a4,-1(a5)
+ 3fa:	fb7d                	bnez	a4,3f0 <strlen+0x14>
+/home/one/xv6-labs-2020/user/ulib.c:33
+ 3fc:	6422                	ld	s0,8(sp)
+ 3fe:	0141                	addi	sp,sp,16
+ 400:	8082                	ret
+/home/one/xv6-labs-2020/user/ulib.c:30
+ 402:	4501                	li	a0,0
+ 404:	bfe5                	j	3fc <strlen+0x20>
+
+0000000000000406 <memset>:
+memset():
+/home/one/xv6-labs-2020/user/ulib.c:37
+ 406:	1141                	addi	sp,sp,-16
+ 408:	e422                	sd	s0,8(sp)
+ 40a:	0800                	addi	s0,sp,16
+/home/one/xv6-labs-2020/user/ulib.c:40
+ 40c:	ce09                	beqz	a2,426 <memset+0x20>
+ 40e:	87aa                	mv	a5,a0
+ 410:	fff6071b          	addiw	a4,a2,-1
+ 414:	1702                	slli	a4,a4,0x20
+ 416:	9301                	srli	a4,a4,0x20
+ 418:	0705                	addi	a4,a4,1
+ 41a:	972a                	add	a4,a4,a0
+/home/one/xv6-labs-2020/user/ulib.c:41 (discriminator 3)
+ 41c:	00b78023          	sb	a1,0(a5)
+ 420:	0785                	addi	a5,a5,1
+/home/one/xv6-labs-2020/user/ulib.c:40 (discriminator 3)
+ 422:	fee79de3          	bne	a5,a4,41c <memset+0x16>
+/home/one/xv6-labs-2020/user/ulib.c:44
+ 426:	6422                	ld	s0,8(sp)
+ 428:	0141                	addi	sp,sp,16
+ 42a:	8082                	ret
+
+000000000000042c <strchr>:
+strchr():
+/home/one/xv6-labs-2020/user/ulib.c:48
+ 42c:	1141                	addi	sp,sp,-16
+ 42e:	e422                	sd	s0,8(sp)
+ 430:	0800                	addi	s0,sp,16
+/home/one/xv6-labs-2020/user/ulib.c:49
+ 432:	00054783          	lbu	a5,0(a0)
+ 436:	cf91                	beqz	a5,452 <strchr+0x26>
+/home/one/xv6-labs-2020/user/ulib.c:50
+ 438:	00f58a63          	beq	a1,a5,44c <strchr+0x20>
+/home/one/xv6-labs-2020/user/ulib.c:49
+ 43c:	0505                	addi	a0,a0,1
+ 43e:	00054783          	lbu	a5,0(a0)
+ 442:	c781                	beqz	a5,44a <strchr+0x1e>
+/home/one/xv6-labs-2020/user/ulib.c:50
+ 444:	feb79ce3          	bne	a5,a1,43c <strchr+0x10>
+ 448:	a011                	j	44c <strchr+0x20>
+/home/one/xv6-labs-2020/user/ulib.c:52
+ 44a:	4501                	li	a0,0
+/home/one/xv6-labs-2020/user/ulib.c:53
+ 44c:	6422                	ld	s0,8(sp)
+ 44e:	0141                	addi	sp,sp,16
+ 450:	8082                	ret
+/home/one/xv6-labs-2020/user/ulib.c:52
+ 452:	4501                	li	a0,0
+ 454:	bfe5                	j	44c <strchr+0x20>
+
+0000000000000456 <gets>:
+gets():
+/home/one/xv6-labs-2020/user/ulib.c:57
+ 456:	711d                	addi	sp,sp,-96
+ 458:	ec86                	sd	ra,88(sp)
+ 45a:	e8a2                	sd	s0,80(sp)
+ 45c:	e4a6                	sd	s1,72(sp)
+ 45e:	e0ca                	sd	s2,64(sp)
+ 460:	fc4e                	sd	s3,56(sp)
+ 462:	f852                	sd	s4,48(sp)
+ 464:	f456                	sd	s5,40(sp)
+ 466:	f05a                	sd	s6,32(sp)
+ 468:	ec5e                	sd	s7,24(sp)
+ 46a:	1080                	addi	s0,sp,96
+ 46c:	8baa                	mv	s7,a0
+ 46e:	8a2e                	mv	s4,a1
+/home/one/xv6-labs-2020/user/ulib.c:61
+ 470:	892a                	mv	s2,a0
+ 472:	4981                	li	s3,0
+/home/one/xv6-labs-2020/user/ulib.c:66
+ 474:	4aa9                	li	s5,10
+ 476:	4b35                	li	s6,13
+/home/one/xv6-labs-2020/user/ulib.c:61 (discriminator 1)
+ 478:	0019849b          	addiw	s1,s3,1
+ 47c:	0344d863          	bge	s1,s4,4ac <gets+0x56>
+/home/one/xv6-labs-2020/user/ulib.c:62
+ 480:	4605                	li	a2,1
+ 482:	faf40593          	addi	a1,s0,-81
+ 486:	4501                	li	a0,0
+ 488:	00000097          	auipc	ra,0x0
+ 48c:	1ac080e7          	jalr	428(ra) # 634 <read>
+/home/one/xv6-labs-2020/user/ulib.c:63
+ 490:	00a05e63          	blez	a0,4ac <gets+0x56>
+/home/one/xv6-labs-2020/user/ulib.c:65
+ 494:	faf44783          	lbu	a5,-81(s0)
+ 498:	00f90023          	sb	a5,0(s2)
+/home/one/xv6-labs-2020/user/ulib.c:66
+ 49c:	01578763          	beq	a5,s5,4aa <gets+0x54>
+ 4a0:	0905                	addi	s2,s2,1
+/home/one/xv6-labs-2020/user/ulib.c:61 (discriminator 1)
+ 4a2:	89a6                	mv	s3,s1
+/home/one/xv6-labs-2020/user/ulib.c:66 (discriminator 1)
+ 4a4:	fd679ae3          	bne	a5,s6,478 <gets+0x22>
+ 4a8:	a011                	j	4ac <gets+0x56>
+/home/one/xv6-labs-2020/user/ulib.c:61
+ 4aa:	89a6                	mv	s3,s1
+/home/one/xv6-labs-2020/user/ulib.c:69
+ 4ac:	99de                	add	s3,s3,s7
+ 4ae:	00098023          	sb	zero,0(s3)
+/home/one/xv6-labs-2020/user/ulib.c:71
+ 4b2:	855e                	mv	a0,s7
+ 4b4:	60e6                	ld	ra,88(sp)
+ 4b6:	6446                	ld	s0,80(sp)
+ 4b8:	64a6                	ld	s1,72(sp)
+ 4ba:	6906                	ld	s2,64(sp)
+ 4bc:	79e2                	ld	s3,56(sp)
+ 4be:	7a42                	ld	s4,48(sp)
+ 4c0:	7aa2                	ld	s5,40(sp)
+ 4c2:	7b02                	ld	s6,32(sp)
+ 4c4:	6be2                	ld	s7,24(sp)
+ 4c6:	6125                	addi	sp,sp,96
+ 4c8:	8082                	ret
+
+00000000000004ca <stat>:
+stat():
+/home/one/xv6-labs-2020/user/ulib.c:75
+ 4ca:	1101                	addi	sp,sp,-32
+ 4cc:	ec06                	sd	ra,24(sp)
+ 4ce:	e822                	sd	s0,16(sp)
+ 4d0:	e426                	sd	s1,8(sp)
+ 4d2:	e04a                	sd	s2,0(sp)
+ 4d4:	1000                	addi	s0,sp,32
+ 4d6:	892e                	mv	s2,a1
+/home/one/xv6-labs-2020/user/ulib.c:79
+ 4d8:	4581                	li	a1,0
+ 4da:	00000097          	auipc	ra,0x0
+ 4de:	182080e7          	jalr	386(ra) # 65c <open>
+/home/one/xv6-labs-2020/user/ulib.c:80
+ 4e2:	02054563          	bltz	a0,50c <stat+0x42>
+ 4e6:	84aa                	mv	s1,a0
+/home/one/xv6-labs-2020/user/ulib.c:82
+ 4e8:	85ca                	mv	a1,s2
+ 4ea:	00000097          	auipc	ra,0x0
+ 4ee:	18a080e7          	jalr	394(ra) # 674 <fstat>
+ 4f2:	892a                	mv	s2,a0
+/home/one/xv6-labs-2020/user/ulib.c:83
+ 4f4:	8526                	mv	a0,s1
+ 4f6:	00000097          	auipc	ra,0x0
+ 4fa:	14e080e7          	jalr	334(ra) # 644 <close>
+/home/one/xv6-labs-2020/user/ulib.c:85
+ 4fe:	854a                	mv	a0,s2
+ 500:	60e2                	ld	ra,24(sp)
+ 502:	6442                	ld	s0,16(sp)
+ 504:	64a2                	ld	s1,8(sp)
+ 506:	6902                	ld	s2,0(sp)
+ 508:	6105                	addi	sp,sp,32
+ 50a:	8082                	ret
+/home/one/xv6-labs-2020/user/ulib.c:81
+ 50c:	597d                	li	s2,-1
+ 50e:	bfc5                	j	4fe <stat+0x34>
+
+0000000000000510 <atoi>:
+atoi():
+/home/one/xv6-labs-2020/user/ulib.c:89
+ 510:	1141                	addi	sp,sp,-16
+ 512:	e422                	sd	s0,8(sp)
+ 514:	0800                	addi	s0,sp,16
+/home/one/xv6-labs-2020/user/ulib.c:93
+ 516:	00054683          	lbu	a3,0(a0)
+ 51a:	fd06879b          	addiw	a5,a3,-48
+ 51e:	0ff7f793          	andi	a5,a5,255
+ 522:	4725                	li	a4,9
+ 524:	02f76963          	bltu	a4,a5,556 <atoi+0x46>
+ 528:	862a                	mv	a2,a0
+/home/one/xv6-labs-2020/user/ulib.c:92
+ 52a:	4501                	li	a0,0
+/home/one/xv6-labs-2020/user/ulib.c:93
+ 52c:	45a5                	li	a1,9
+/home/one/xv6-labs-2020/user/ulib.c:94
+ 52e:	0605                	addi	a2,a2,1
+ 530:	0025179b          	slliw	a5,a0,0x2
+ 534:	9fa9                	addw	a5,a5,a0
+ 536:	0017979b          	slliw	a5,a5,0x1
+ 53a:	9fb5                	addw	a5,a5,a3
+ 53c:	fd07851b          	addiw	a0,a5,-48
+/home/one/xv6-labs-2020/user/ulib.c:93
+ 540:	00064683          	lbu	a3,0(a2)
+ 544:	fd06871b          	addiw	a4,a3,-48
+ 548:	0ff77713          	andi	a4,a4,255
+ 54c:	fee5f1e3          	bgeu	a1,a4,52e <atoi+0x1e>
+/home/one/xv6-labs-2020/user/ulib.c:96
+ 550:	6422                	ld	s0,8(sp)
+ 552:	0141                	addi	sp,sp,16
+ 554:	8082                	ret
+/home/one/xv6-labs-2020/user/ulib.c:92
+ 556:	4501                	li	a0,0
+ 558:	bfe5                	j	550 <atoi+0x40>
+
+000000000000055a <memmove>:
+memmove():
+/home/one/xv6-labs-2020/user/ulib.c:100
+ 55a:	1141                	addi	sp,sp,-16
+ 55c:	e422                	sd	s0,8(sp)
+ 55e:	0800                	addi	s0,sp,16
+/home/one/xv6-labs-2020/user/ulib.c:106
+ 560:	02b57663          	bgeu	a0,a1,58c <memmove+0x32>
+/home/one/xv6-labs-2020/user/ulib.c:107
+ 564:	02c05163          	blez	a2,586 <memmove+0x2c>
+ 568:	fff6079b          	addiw	a5,a2,-1
+ 56c:	1782                	slli	a5,a5,0x20
+ 56e:	9381                	srli	a5,a5,0x20
+ 570:	0785                	addi	a5,a5,1
+ 572:	97aa                	add	a5,a5,a0
+/home/one/xv6-labs-2020/user/ulib.c:104
+ 574:	872a                	mv	a4,a0
+/home/one/xv6-labs-2020/user/ulib.c:108
+ 576:	0585                	addi	a1,a1,1
+ 578:	0705                	addi	a4,a4,1
+ 57a:	fff5c683          	lbu	a3,-1(a1)
+ 57e:	fed70fa3          	sb	a3,-1(a4)
+/home/one/xv6-labs-2020/user/ulib.c:107
+ 582:	fee79ae3          	bne	a5,a4,576 <memmove+0x1c>
+/home/one/xv6-labs-2020/user/ulib.c:116
+ 586:	6422                	ld	s0,8(sp)
+ 588:	0141                	addi	sp,sp,16
+ 58a:	8082                	ret
+/home/one/xv6-labs-2020/user/ulib.c:110
+ 58c:	00c50733          	add	a4,a0,a2
+/home/one/xv6-labs-2020/user/ulib.c:111
+ 590:	95b2                	add	a1,a1,a2
+/home/one/xv6-labs-2020/user/ulib.c:112
+ 592:	fec05ae3          	blez	a2,586 <memmove+0x2c>
+ 596:	fff6079b          	addiw	a5,a2,-1
+ 59a:	1782                	slli	a5,a5,0x20
+ 59c:	9381                	srli	a5,a5,0x20
+ 59e:	fff7c793          	not	a5,a5
+ 5a2:	97ba                	add	a5,a5,a4
+/home/one/xv6-labs-2020/user/ulib.c:113
+ 5a4:	15fd                	addi	a1,a1,-1
+ 5a6:	177d                	addi	a4,a4,-1
+ 5a8:	0005c683          	lbu	a3,0(a1)
+ 5ac:	00d70023          	sb	a3,0(a4)
+/home/one/xv6-labs-2020/user/ulib.c:112
+ 5b0:	fef71ae3          	bne	a4,a5,5a4 <memmove+0x4a>
+ 5b4:	bfc9                	j	586 <memmove+0x2c>
+
+00000000000005b6 <memcmp>:
+memcmp():
+/home/one/xv6-labs-2020/user/ulib.c:120
+ 5b6:	1141                	addi	sp,sp,-16
+ 5b8:	e422                	sd	s0,8(sp)
+ 5ba:	0800                	addi	s0,sp,16
+/home/one/xv6-labs-2020/user/ulib.c:122
+ 5bc:	ce15                	beqz	a2,5f8 <memcmp+0x42>
+ 5be:	fff6069b          	addiw	a3,a2,-1
+/home/one/xv6-labs-2020/user/ulib.c:123
+ 5c2:	00054783          	lbu	a5,0(a0)
+ 5c6:	0005c703          	lbu	a4,0(a1)
+ 5ca:	02e79063          	bne	a5,a4,5ea <memcmp+0x34>
+ 5ce:	1682                	slli	a3,a3,0x20
+ 5d0:	9281                	srli	a3,a3,0x20
+ 5d2:	0685                	addi	a3,a3,1
+ 5d4:	96aa                	add	a3,a3,a0
+/home/one/xv6-labs-2020/user/ulib.c:126
+ 5d6:	0505                	addi	a0,a0,1
+/home/one/xv6-labs-2020/user/ulib.c:127
+ 5d8:	0585                	addi	a1,a1,1
+/home/one/xv6-labs-2020/user/ulib.c:122
+ 5da:	00d50d63          	beq	a0,a3,5f4 <memcmp+0x3e>
+/home/one/xv6-labs-2020/user/ulib.c:123
+ 5de:	00054783          	lbu	a5,0(a0)
+ 5e2:	0005c703          	lbu	a4,0(a1)
+ 5e6:	fee788e3          	beq	a5,a4,5d6 <memcmp+0x20>
+/home/one/xv6-labs-2020/user/ulib.c:124
+ 5ea:	40e7853b          	subw	a0,a5,a4
+/home/one/xv6-labs-2020/user/ulib.c:130
+ 5ee:	6422                	ld	s0,8(sp)
+ 5f0:	0141                	addi	sp,sp,16
+ 5f2:	8082                	ret
+/home/one/xv6-labs-2020/user/ulib.c:129
+ 5f4:	4501                	li	a0,0
+ 5f6:	bfe5                	j	5ee <memcmp+0x38>
+ 5f8:	4501                	li	a0,0
+ 5fa:	bfd5                	j	5ee <memcmp+0x38>
+
+00000000000005fc <memcpy>:
+memcpy():
+/home/one/xv6-labs-2020/user/ulib.c:134
+ 5fc:	1141                	addi	sp,sp,-16
+ 5fe:	e406                	sd	ra,8(sp)
+ 600:	e022                	sd	s0,0(sp)
+ 602:	0800                	addi	s0,sp,16
+/home/one/xv6-labs-2020/user/ulib.c:135
+ 604:	00000097          	auipc	ra,0x0
+ 608:	f56080e7          	jalr	-170(ra) # 55a <memmove>
+/home/one/xv6-labs-2020/user/ulib.c:136
+ 60c:	60a2                	ld	ra,8(sp)
+ 60e:	6402                	ld	s0,0(sp)
+ 610:	0141                	addi	sp,sp,16
+ 612:	8082                	ret
+
+0000000000000614 <fork>:
+fork():
+/home/one/xv6-labs-2020/user/usys.S:5
+ 614:	4885                	li	a7,1
+/home/one/xv6-labs-2020/user/usys.S:6
+ 616:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:7
+ 61a:	8082                	ret
+
+000000000000061c <exit>:
+exit():
+/home/one/xv6-labs-2020/user/usys.S:10
+ 61c:	4889                	li	a7,2
+/home/one/xv6-labs-2020/user/usys.S:11
+ 61e:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:12
+ 622:	8082                	ret
+
+0000000000000624 <wait>:
+wait():
+/home/one/xv6-labs-2020/user/usys.S:15
+ 624:	488d                	li	a7,3
+/home/one/xv6-labs-2020/user/usys.S:16
+ 626:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:17
+ 62a:	8082                	ret
+
+000000000000062c <pipe>:
+pipe():
+/home/one/xv6-labs-2020/user/usys.S:20
+ 62c:	4891                	li	a7,4
+/home/one/xv6-labs-2020/user/usys.S:21
+ 62e:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:22
+ 632:	8082                	ret
+
+0000000000000634 <read>:
+read():
+/home/one/xv6-labs-2020/user/usys.S:25
+ 634:	4895                	li	a7,5
+/home/one/xv6-labs-2020/user/usys.S:26
+ 636:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:27
+ 63a:	8082                	ret
+
+000000000000063c <write>:
+write():
+/home/one/xv6-labs-2020/user/usys.S:30
+ 63c:	48c1                	li	a7,16
+/home/one/xv6-labs-2020/user/usys.S:31
+ 63e:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:32
+ 642:	8082                	ret
+
+0000000000000644 <close>:
+close():
+/home/one/xv6-labs-2020/user/usys.S:35
+ 644:	48d5                	li	a7,21
+/home/one/xv6-labs-2020/user/usys.S:36
+ 646:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:37
+ 64a:	8082                	ret
+
+000000000000064c <kill>:
+kill():
+/home/one/xv6-labs-2020/user/usys.S:40
+ 64c:	4899                	li	a7,6
+/home/one/xv6-labs-2020/user/usys.S:41
+ 64e:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:42
+ 652:	8082                	ret
+
+0000000000000654 <exec>:
+exec():
+/home/one/xv6-labs-2020/user/usys.S:45
+ 654:	489d                	li	a7,7
+/home/one/xv6-labs-2020/user/usys.S:46
+ 656:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:47
+ 65a:	8082                	ret
+
+000000000000065c <open>:
+open():
+/home/one/xv6-labs-2020/user/usys.S:50
+ 65c:	48bd                	li	a7,15
+/home/one/xv6-labs-2020/user/usys.S:51
+ 65e:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:52
+ 662:	8082                	ret
+
+0000000000000664 <mknod>:
+mknod():
+/home/one/xv6-labs-2020/user/usys.S:55
+ 664:	48c5                	li	a7,17
+/home/one/xv6-labs-2020/user/usys.S:56
+ 666:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:57
+ 66a:	8082                	ret
+
+000000000000066c <unlink>:
+unlink():
+/home/one/xv6-labs-2020/user/usys.S:60
+ 66c:	48c9                	li	a7,18
+/home/one/xv6-labs-2020/user/usys.S:61
+ 66e:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:62
+ 672:	8082                	ret
+
+0000000000000674 <fstat>:
+fstat():
+/home/one/xv6-labs-2020/user/usys.S:65
+ 674:	48a1                	li	a7,8
+/home/one/xv6-labs-2020/user/usys.S:66
+ 676:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:67
+ 67a:	8082                	ret
+
+000000000000067c <link>:
+link():
+/home/one/xv6-labs-2020/user/usys.S:70
+ 67c:	48cd                	li	a7,19
+/home/one/xv6-labs-2020/user/usys.S:71
+ 67e:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:72
+ 682:	8082                	ret
+
+0000000000000684 <mkdir>:
+mkdir():
+/home/one/xv6-labs-2020/user/usys.S:75
+ 684:	48d1                	li	a7,20
+/home/one/xv6-labs-2020/user/usys.S:76
+ 686:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:77
+ 68a:	8082                	ret
+
+000000000000068c <chdir>:
+chdir():
+/home/one/xv6-labs-2020/user/usys.S:80
+ 68c:	48a5                	li	a7,9
+/home/one/xv6-labs-2020/user/usys.S:81
+ 68e:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:82
+ 692:	8082                	ret
+
+0000000000000694 <dup>:
+dup():
+/home/one/xv6-labs-2020/user/usys.S:85
+ 694:	48a9                	li	a7,10
+/home/one/xv6-labs-2020/user/usys.S:86
+ 696:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:87
+ 69a:	8082                	ret
+
+000000000000069c <getpid>:
+getpid():
+/home/one/xv6-labs-2020/user/usys.S:90
+ 69c:	48ad                	li	a7,11
+/home/one/xv6-labs-2020/user/usys.S:91
+ 69e:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:92
+ 6a2:	8082                	ret
+
+00000000000006a4 <sbrk>:
+sbrk():
+/home/one/xv6-labs-2020/user/usys.S:95
+ 6a4:	48b1                	li	a7,12
+/home/one/xv6-labs-2020/user/usys.S:96
+ 6a6:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:97
+ 6aa:	8082                	ret
+
+00000000000006ac <sleep>:
+sleep():
+/home/one/xv6-labs-2020/user/usys.S:100
+ 6ac:	48b5                	li	a7,13
+/home/one/xv6-labs-2020/user/usys.S:101
+ 6ae:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:102
+ 6b2:	8082                	ret
+
+00000000000006b4 <uptime>:
+uptime():
+/home/one/xv6-labs-2020/user/usys.S:105
+ 6b4:	48b9                	li	a7,14
+/home/one/xv6-labs-2020/user/usys.S:106
+ 6b6:	00000073          	ecall
+/home/one/xv6-labs-2020/user/usys.S:107
+ 6ba:	8082                	ret
+
+00000000000006bc <putc>:
+putc():
+/home/one/xv6-labs-2020/user/printf.c:11
+ 6bc:	1101                	addi	sp,sp,-32
+ 6be:	ec06                	sd	ra,24(sp)
+ 6c0:	e822                	sd	s0,16(sp)
+ 6c2:	1000                	addi	s0,sp,32
+ 6c4:	feb407a3          	sb	a1,-17(s0)
+/home/one/xv6-labs-2020/user/printf.c:12
+ 6c8:	4605                	li	a2,1
+ 6ca:	fef40593          	addi	a1,s0,-17
+ 6ce:	00000097          	auipc	ra,0x0
+ 6d2:	f6e080e7          	jalr	-146(ra) # 63c <write>
+/home/one/xv6-labs-2020/user/printf.c:13
+ 6d6:	60e2                	ld	ra,24(sp)
+ 6d8:	6442                	ld	s0,16(sp)
+ 6da:	6105                	addi	sp,sp,32
+ 6dc:	8082                	ret
+
+00000000000006de <printint>:
+printint():
+/home/one/xv6-labs-2020/user/printf.c:17
+ 6de:	7139                	addi	sp,sp,-64
+ 6e0:	fc06                	sd	ra,56(sp)
+ 6e2:	f822                	sd	s0,48(sp)
+ 6e4:	f426                	sd	s1,40(sp)
+ 6e6:	f04a                	sd	s2,32(sp)
+ 6e8:	ec4e                	sd	s3,24(sp)
+ 6ea:	0080                	addi	s0,sp,64
+/home/one/xv6-labs-2020/user/printf.c:23
+ 6ec:	c299                	beqz	a3,6f2 <printint+0x14>
+/home/one/xv6-labs-2020/user/printf.c:23 (discriminator 1)
+ 6ee:	0005cd63          	bltz	a1,708 <printint+0x2a>
+/home/one/xv6-labs-2020/user/printf.c:27
+ 6f2:	2581                	sext.w	a1,a1
+/home/one/xv6-labs-2020/user/printf.c:22
+ 6f4:	4301                	li	t1,0
+ 6f6:	fc040713          	addi	a4,s0,-64
+/home/one/xv6-labs-2020/user/printf.c:30
+ 6fa:	4801                	li	a6,0
+/home/one/xv6-labs-2020/user/printf.c:32
+ 6fc:	2601                	sext.w	a2,a2
+ 6fe:	00000897          	auipc	a7,0x0
+ 702:	48a88893          	addi	a7,a7,1162 # b88 <digits>
+ 706:	a039                	j	714 <printint+0x36>
+/home/one/xv6-labs-2020/user/printf.c:25
+ 708:	40b005bb          	negw	a1,a1
+/home/one/xv6-labs-2020/user/printf.c:24
+ 70c:	4305                	li	t1,1
+/home/one/xv6-labs-2020/user/printf.c:25
+ 70e:	b7e5                	j	6f6 <printint+0x18>
+/home/one/xv6-labs-2020/user/printf.c:33
+ 710:	85be                	mv	a1,a5
+/home/one/xv6-labs-2020/user/printf.c:32
+ 712:	8836                	mv	a6,a3
+/home/one/xv6-labs-2020/user/printf.c:32 (discriminator 1)
+ 714:	0018069b          	addiw	a3,a6,1
+ 718:	02c5f7bb          	remuw	a5,a1,a2
+ 71c:	1782                	slli	a5,a5,0x20
+ 71e:	9381                	srli	a5,a5,0x20
+ 720:	97c6                	add	a5,a5,a7
+ 722:	0007c783          	lbu	a5,0(a5)
+ 726:	00f70023          	sb	a5,0(a4)
+ 72a:	0705                	addi	a4,a4,1
+/home/one/xv6-labs-2020/user/printf.c:33 (discriminator 1)
+ 72c:	02c5d7bb          	divuw	a5,a1,a2
+ 730:	fec5f0e3          	bgeu	a1,a2,710 <printint+0x32>
+/home/one/xv6-labs-2020/user/printf.c:34
+ 734:	00030b63          	beqz	t1,74a <printint+0x6c>
+/home/one/xv6-labs-2020/user/printf.c:35
+ 738:	fd040793          	addi	a5,s0,-48
+ 73c:	96be                	add	a3,a3,a5
+ 73e:	02d00793          	li	a5,45
+ 742:	fef68823          	sb	a5,-16(a3)
+ 746:	0028069b          	addiw	a3,a6,2
+/home/one/xv6-labs-2020/user/printf.c:37
+ 74a:	02d05963          	blez	a3,77c <printint+0x9e>
+ 74e:	89aa                	mv	s3,a0
+ 750:	fc040793          	addi	a5,s0,-64
+ 754:	00d784b3          	add	s1,a5,a3
+ 758:	fff78913          	addi	s2,a5,-1
+ 75c:	9936                	add	s2,s2,a3
+ 75e:	36fd                	addiw	a3,a3,-1
+ 760:	1682                	slli	a3,a3,0x20
+ 762:	9281                	srli	a3,a3,0x20
+ 764:	40d90933          	sub	s2,s2,a3
+/home/one/xv6-labs-2020/user/printf.c:38
+ 768:	fff4c583          	lbu	a1,-1(s1)
+ 76c:	854e                	mv	a0,s3
+ 76e:	00000097          	auipc	ra,0x0
+ 772:	f4e080e7          	jalr	-178(ra) # 6bc <putc>
+ 776:	14fd                	addi	s1,s1,-1
+/home/one/xv6-labs-2020/user/printf.c:37
+ 778:	ff2498e3          	bne	s1,s2,768 <printint+0x8a>
+/home/one/xv6-labs-2020/user/printf.c:39
+ 77c:	70e2                	ld	ra,56(sp)
+ 77e:	7442                	ld	s0,48(sp)
+ 780:	74a2                	ld	s1,40(sp)
+ 782:	7902                	ld	s2,32(sp)
+ 784:	69e2                	ld	s3,24(sp)
+ 786:	6121                	addi	sp,sp,64
+ 788:	8082                	ret
+
+000000000000078a <vprintf>:
+vprintf():
+/home/one/xv6-labs-2020/user/printf.c:53
+ 78a:	7119                	addi	sp,sp,-128
+ 78c:	fc86                	sd	ra,120(sp)
+ 78e:	f8a2                	sd	s0,112(sp)
+ 790:	f4a6                	sd	s1,104(sp)
+ 792:	f0ca                	sd	s2,96(sp)
+ 794:	ecce                	sd	s3,88(sp)
+ 796:	e8d2                	sd	s4,80(sp)
+ 798:	e4d6                	sd	s5,72(sp)
+ 79a:	e0da                	sd	s6,64(sp)
+ 79c:	fc5e                	sd	s7,56(sp)
+ 79e:	f862                	sd	s8,48(sp)
+ 7a0:	f466                	sd	s9,40(sp)
+ 7a2:	f06a                	sd	s10,32(sp)
+ 7a4:	ec6e                	sd	s11,24(sp)
+ 7a6:	0100                	addi	s0,sp,128
+/home/one/xv6-labs-2020/user/printf.c:58
+ 7a8:	0005c483          	lbu	s1,0(a1)
+ 7ac:	18048d63          	beqz	s1,946 <vprintf+0x1bc>
+ 7b0:	8aaa                	mv	s5,a0
+ 7b2:	8b32                	mv	s6,a2
+ 7b4:	00158913          	addi	s2,a1,1
+/home/one/xv6-labs-2020/user/printf.c:57
+ 7b8:	4981                	li	s3,0
+/home/one/xv6-labs-2020/user/printf.c:66
+ 7ba:	02500a13          	li	s4,37
+/home/one/xv6-labs-2020/user/printf.c:67
+ 7be:	06400c13          	li	s8,100
+/home/one/xv6-labs-2020/user/printf.c:69
+ 7c2:	06c00c93          	li	s9,108
+/home/one/xv6-labs-2020/user/printf.c:71
+ 7c6:	07800d13          	li	s10,120
+/home/one/xv6-labs-2020/user/printf.c:73
+ 7ca:	07000d93          	li	s11,112
+printptr():
+/home/one/xv6-labs-2020/user/printf.c:47
+ 7ce:	00000b97          	auipc	s7,0x0
+ 7d2:	3bab8b93          	addi	s7,s7,954 # b88 <digits>
+ 7d6:	a839                	j	7f4 <vprintf+0x6a>
+vprintf():
+/home/one/xv6-labs-2020/user/printf.c:64
+ 7d8:	85a6                	mv	a1,s1
+ 7da:	8556                	mv	a0,s5
+ 7dc:	00000097          	auipc	ra,0x0
+ 7e0:	ee0080e7          	jalr	-288(ra) # 6bc <putc>
+ 7e4:	a019                	j	7ea <vprintf+0x60>
+/home/one/xv6-labs-2020/user/printf.c:66
+ 7e6:	01498f63          	beq	s3,s4,804 <vprintf+0x7a>
+ 7ea:	0905                	addi	s2,s2,1
+/home/one/xv6-labs-2020/user/printf.c:58 (discriminator 2)
+ 7ec:	fff94483          	lbu	s1,-1(s2)
+ 7f0:	14048b63          	beqz	s1,946 <vprintf+0x1bc>
+/home/one/xv6-labs-2020/user/printf.c:59
+ 7f4:	0004879b          	sext.w	a5,s1
+/home/one/xv6-labs-2020/user/printf.c:60
+ 7f8:	fe0997e3          	bnez	s3,7e6 <vprintf+0x5c>
+/home/one/xv6-labs-2020/user/printf.c:61
+ 7fc:	fd479ee3          	bne	a5,s4,7d8 <vprintf+0x4e>
+/home/one/xv6-labs-2020/user/printf.c:62
+ 800:	89be                	mv	s3,a5
+ 802:	b7e5                	j	7ea <vprintf+0x60>
+/home/one/xv6-labs-2020/user/printf.c:67
+ 804:	05878063          	beq	a5,s8,844 <vprintf+0xba>
+/home/one/xv6-labs-2020/user/printf.c:69
+ 808:	05978c63          	beq	a5,s9,860 <vprintf+0xd6>
+/home/one/xv6-labs-2020/user/printf.c:71
+ 80c:	07a78863          	beq	a5,s10,87c <vprintf+0xf2>
+/home/one/xv6-labs-2020/user/printf.c:73
+ 810:	09b78463          	beq	a5,s11,898 <vprintf+0x10e>
+/home/one/xv6-labs-2020/user/printf.c:75
+ 814:	07300713          	li	a4,115
+ 818:	0ce78563          	beq	a5,a4,8e2 <vprintf+0x158>
+/home/one/xv6-labs-2020/user/printf.c:83
+ 81c:	06300713          	li	a4,99
+ 820:	0ee78c63          	beq	a5,a4,918 <vprintf+0x18e>
+/home/one/xv6-labs-2020/user/printf.c:85
+ 824:	11478663          	beq	a5,s4,930 <vprintf+0x1a6>
+/home/one/xv6-labs-2020/user/printf.c:89
+ 828:	85d2                	mv	a1,s4
+ 82a:	8556                	mv	a0,s5
+ 82c:	00000097          	auipc	ra,0x0
+ 830:	e90080e7          	jalr	-368(ra) # 6bc <putc>
+/home/one/xv6-labs-2020/user/printf.c:90
+ 834:	85a6                	mv	a1,s1
+ 836:	8556                	mv	a0,s5
+ 838:	00000097          	auipc	ra,0x0
+ 83c:	e84080e7          	jalr	-380(ra) # 6bc <putc>
+/home/one/xv6-labs-2020/user/printf.c:92
+ 840:	4981                	li	s3,0
+ 842:	b765                	j	7ea <vprintf+0x60>
+/home/one/xv6-labs-2020/user/printf.c:68
+ 844:	008b0493          	addi	s1,s6,8
+ 848:	4685                	li	a3,1
+ 84a:	4629                	li	a2,10
+ 84c:	000b2583          	lw	a1,0(s6)
+ 850:	8556                	mv	a0,s5
+ 852:	00000097          	auipc	ra,0x0
+ 856:	e8c080e7          	jalr	-372(ra) # 6de <printint>
+ 85a:	8b26                	mv	s6,s1
+/home/one/xv6-labs-2020/user/printf.c:92
+ 85c:	4981                	li	s3,0
+ 85e:	b771                	j	7ea <vprintf+0x60>
+/home/one/xv6-labs-2020/user/printf.c:70
+ 860:	008b0493          	addi	s1,s6,8
+ 864:	4681                	li	a3,0
+ 866:	4629                	li	a2,10
+ 868:	000b2583          	lw	a1,0(s6)
+ 86c:	8556                	mv	a0,s5
+ 86e:	00000097          	auipc	ra,0x0
+ 872:	e70080e7          	jalr	-400(ra) # 6de <printint>
+ 876:	8b26                	mv	s6,s1
+/home/one/xv6-labs-2020/user/printf.c:92
+ 878:	4981                	li	s3,0
+ 87a:	bf85                	j	7ea <vprintf+0x60>
+/home/one/xv6-labs-2020/user/printf.c:72
+ 87c:	008b0493          	addi	s1,s6,8
+ 880:	4681                	li	a3,0
+ 882:	4641                	li	a2,16
+ 884:	000b2583          	lw	a1,0(s6)
+ 888:	8556                	mv	a0,s5
+ 88a:	00000097          	auipc	ra,0x0
+ 88e:	e54080e7          	jalr	-428(ra) # 6de <printint>
+ 892:	8b26                	mv	s6,s1
+/home/one/xv6-labs-2020/user/printf.c:92
+ 894:	4981                	li	s3,0
+ 896:	bf91                	j	7ea <vprintf+0x60>
+/home/one/xv6-labs-2020/user/printf.c:74
+ 898:	008b0793          	addi	a5,s6,8
+ 89c:	f8f43423          	sd	a5,-120(s0)
+ 8a0:	000b3983          	ld	s3,0(s6)
+printptr():
+/home/one/xv6-labs-2020/user/printf.c:44
+ 8a4:	03000593          	li	a1,48
+ 8a8:	8556                	mv	a0,s5
+ 8aa:	00000097          	auipc	ra,0x0
+ 8ae:	e12080e7          	jalr	-494(ra) # 6bc <putc>
+/home/one/xv6-labs-2020/user/printf.c:45
+ 8b2:	85ea                	mv	a1,s10
+ 8b4:	8556                	mv	a0,s5
+ 8b6:	00000097          	auipc	ra,0x0
+ 8ba:	e06080e7          	jalr	-506(ra) # 6bc <putc>
+ 8be:	44c1                	li	s1,16
+/home/one/xv6-labs-2020/user/printf.c:47
+ 8c0:	03c9d793          	srli	a5,s3,0x3c
+ 8c4:	97de                	add	a5,a5,s7
+ 8c6:	0007c583          	lbu	a1,0(a5)
+ 8ca:	8556                	mv	a0,s5
+ 8cc:	00000097          	auipc	ra,0x0
+ 8d0:	df0080e7          	jalr	-528(ra) # 6bc <putc>
+/home/one/xv6-labs-2020/user/printf.c:46
+ 8d4:	0992                	slli	s3,s3,0x4
+ 8d6:	34fd                	addiw	s1,s1,-1
+ 8d8:	f4e5                	bnez	s1,8c0 <vprintf+0x136>
+vprintf():
+/home/one/xv6-labs-2020/user/printf.c:74
+ 8da:	f8843b03          	ld	s6,-120(s0)
+/home/one/xv6-labs-2020/user/printf.c:92
+ 8de:	4981                	li	s3,0
+ 8e0:	b729                	j	7ea <vprintf+0x60>
+/home/one/xv6-labs-2020/user/printf.c:76
+ 8e2:	008b0993          	addi	s3,s6,8
+ 8e6:	000b3483          	ld	s1,0(s6)
+/home/one/xv6-labs-2020/user/printf.c:77
+ 8ea:	c085                	beqz	s1,90a <vprintf+0x180>
+/home/one/xv6-labs-2020/user/printf.c:79
+ 8ec:	0004c583          	lbu	a1,0(s1)
+ 8f0:	c9a1                	beqz	a1,940 <vprintf+0x1b6>
+/home/one/xv6-labs-2020/user/printf.c:80
+ 8f2:	8556                	mv	a0,s5
+ 8f4:	00000097          	auipc	ra,0x0
+ 8f8:	dc8080e7          	jalr	-568(ra) # 6bc <putc>
+/home/one/xv6-labs-2020/user/printf.c:81
+ 8fc:	0485                	addi	s1,s1,1
+/home/one/xv6-labs-2020/user/printf.c:79
+ 8fe:	0004c583          	lbu	a1,0(s1)
+ 902:	f9e5                	bnez	a1,8f2 <vprintf+0x168>
+/home/one/xv6-labs-2020/user/printf.c:76
+ 904:	8b4e                	mv	s6,s3
+/home/one/xv6-labs-2020/user/printf.c:92
+ 906:	4981                	li	s3,0
+ 908:	b5cd                	j	7ea <vprintf+0x60>
+/home/one/xv6-labs-2020/user/printf.c:78
+ 90a:	00000497          	auipc	s1,0x0
+ 90e:	29648493          	addi	s1,s1,662 # ba0 <digits+0x18>
+/home/one/xv6-labs-2020/user/printf.c:79
+ 912:	02800593          	li	a1,40
+ 916:	bff1                	j	8f2 <vprintf+0x168>
+/home/one/xv6-labs-2020/user/printf.c:84
+ 918:	008b0493          	addi	s1,s6,8
+ 91c:	000b4583          	lbu	a1,0(s6)
+ 920:	8556                	mv	a0,s5
+ 922:	00000097          	auipc	ra,0x0
+ 926:	d9a080e7          	jalr	-614(ra) # 6bc <putc>
+ 92a:	8b26                	mv	s6,s1
+/home/one/xv6-labs-2020/user/printf.c:92
+ 92c:	4981                	li	s3,0
+ 92e:	bd75                	j	7ea <vprintf+0x60>
+/home/one/xv6-labs-2020/user/printf.c:86
+ 930:	85d2                	mv	a1,s4
+ 932:	8556                	mv	a0,s5
+ 934:	00000097          	auipc	ra,0x0
+ 938:	d88080e7          	jalr	-632(ra) # 6bc <putc>
+/home/one/xv6-labs-2020/user/printf.c:92
+ 93c:	4981                	li	s3,0
+ 93e:	b575                	j	7ea <vprintf+0x60>
+/home/one/xv6-labs-2020/user/printf.c:76
+ 940:	8b4e                	mv	s6,s3
+/home/one/xv6-labs-2020/user/printf.c:92
+ 942:	4981                	li	s3,0
+ 944:	b55d                	j	7ea <vprintf+0x60>
+/home/one/xv6-labs-2020/user/printf.c:95
+ 946:	70e6                	ld	ra,120(sp)
+ 948:	7446                	ld	s0,112(sp)
+ 94a:	74a6                	ld	s1,104(sp)
+ 94c:	7906                	ld	s2,96(sp)
+ 94e:	69e6                	ld	s3,88(sp)
+ 950:	6a46                	ld	s4,80(sp)
+ 952:	6aa6                	ld	s5,72(sp)
+ 954:	6b06                	ld	s6,64(sp)
+ 956:	7be2                	ld	s7,56(sp)
+ 958:	7c42                	ld	s8,48(sp)
+ 95a:	7ca2                	ld	s9,40(sp)
+ 95c:	7d02                	ld	s10,32(sp)
+ 95e:	6de2                	ld	s11,24(sp)
+ 960:	6109                	addi	sp,sp,128
+ 962:	8082                	ret
+
+0000000000000964 <fprintf>:
+fprintf():
+/home/one/xv6-labs-2020/user/printf.c:99
+ 964:	715d                	addi	sp,sp,-80
+ 966:	ec06                	sd	ra,24(sp)
+ 968:	e822                	sd	s0,16(sp)
+ 96a:	1000                	addi	s0,sp,32
+ 96c:	e010                	sd	a2,0(s0)
+ 96e:	e414                	sd	a3,8(s0)
+ 970:	e818                	sd	a4,16(s0)
+ 972:	ec1c                	sd	a5,24(s0)
+ 974:	03043023          	sd	a6,32(s0)
+ 978:	03143423          	sd	a7,40(s0)
+/home/one/xv6-labs-2020/user/printf.c:102
+ 97c:	fe843423          	sd	s0,-24(s0)
+/home/one/xv6-labs-2020/user/printf.c:103
+ 980:	8622                	mv	a2,s0
+ 982:	00000097          	auipc	ra,0x0
+ 986:	e08080e7          	jalr	-504(ra) # 78a <vprintf>
+/home/one/xv6-labs-2020/user/printf.c:104
+ 98a:	60e2                	ld	ra,24(sp)
+ 98c:	6442                	ld	s0,16(sp)
+ 98e:	6161                	addi	sp,sp,80
+ 990:	8082                	ret
+
+0000000000000992 <printf>:
+printf():
+/home/one/xv6-labs-2020/user/printf.c:108
+ 992:	711d                	addi	sp,sp,-96
+ 994:	ec06                	sd	ra,24(sp)
+ 996:	e822                	sd	s0,16(sp)
+ 998:	1000                	addi	s0,sp,32
+ 99a:	e40c                	sd	a1,8(s0)
+ 99c:	e810                	sd	a2,16(s0)
+ 99e:	ec14                	sd	a3,24(s0)
+ 9a0:	f018                	sd	a4,32(s0)
+ 9a2:	f41c                	sd	a5,40(s0)
+ 9a4:	03043823          	sd	a6,48(s0)
+ 9a8:	03143c23          	sd	a7,56(s0)
+/home/one/xv6-labs-2020/user/printf.c:111
+ 9ac:	00840613          	addi	a2,s0,8
+ 9b0:	fec43423          	sd	a2,-24(s0)
+/home/one/xv6-labs-2020/user/printf.c:112
+ 9b4:	85aa                	mv	a1,a0
+ 9b6:	4505                	li	a0,1
+ 9b8:	00000097          	auipc	ra,0x0
+ 9bc:	dd2080e7          	jalr	-558(ra) # 78a <vprintf>
+/home/one/xv6-labs-2020/user/printf.c:113
+ 9c0:	60e2                	ld	ra,24(sp)
+ 9c2:	6442                	ld	s0,16(sp)
+ 9c4:	6125                	addi	sp,sp,96
+ 9c6:	8082                	ret
+
+00000000000009c8 <free>:
+free():
+/home/one/xv6-labs-2020/user/umalloc.c:26
+ 9c8:	1141                	addi	sp,sp,-16
+ 9ca:	e422                	sd	s0,8(sp)
+ 9cc:	0800                	addi	s0,sp,16
+/home/one/xv6-labs-2020/user/umalloc.c:29
+ 9ce:	ff050693          	addi	a3,a0,-16
+/home/one/xv6-labs-2020/user/umalloc.c:30
+ 9d2:	00000797          	auipc	a5,0x0
+ 9d6:	1d678793          	addi	a5,a5,470 # ba8 <__DATA_BEGIN__>
+ 9da:	639c                	ld	a5,0(a5)
+ 9dc:	a805                	j	a0c <free+0x44>
+/home/one/xv6-labs-2020/user/umalloc.c:34
+ 9de:	4618                	lw	a4,8(a2)
+ 9e0:	9db9                	addw	a1,a1,a4
+ 9e2:	feb52c23          	sw	a1,-8(a0)
+/home/one/xv6-labs-2020/user/umalloc.c:35
+ 9e6:	6398                	ld	a4,0(a5)
+ 9e8:	6318                	ld	a4,0(a4)
+ 9ea:	fee53823          	sd	a4,-16(a0)
+ 9ee:	a091                	j	a32 <free+0x6a>
+/home/one/xv6-labs-2020/user/umalloc.c:39
+ 9f0:	ff852703          	lw	a4,-8(a0)
+ 9f4:	9e39                	addw	a2,a2,a4
+ 9f6:	c790                	sw	a2,8(a5)
+/home/one/xv6-labs-2020/user/umalloc.c:40
+ 9f8:	ff053703          	ld	a4,-16(a0)
+ 9fc:	e398                	sd	a4,0(a5)
+ 9fe:	a099                	j	a44 <free+0x7c>
+/home/one/xv6-labs-2020/user/umalloc.c:31
+ a00:	6398                	ld	a4,0(a5)
+ a02:	00e7e463          	bltu	a5,a4,a0a <free+0x42>
+/home/one/xv6-labs-2020/user/umalloc.c:31 (discriminator 2)
+ a06:	00e6ea63          	bltu	a3,a4,a1a <free+0x52>
+/home/one/xv6-labs-2020/user/umalloc.c:26 (discriminator 1)
+ a0a:	87ba                	mv	a5,a4
+/home/one/xv6-labs-2020/user/umalloc.c:30 (discriminator 1)
+ a0c:	fed7fae3          	bgeu	a5,a3,a00 <free+0x38>
+/home/one/xv6-labs-2020/user/umalloc.c:30 (discriminator 3)
+ a10:	6398                	ld	a4,0(a5)
+ a12:	00e6e463          	bltu	a3,a4,a1a <free+0x52>
+/home/one/xv6-labs-2020/user/umalloc.c:31
+ a16:	fee7eae3          	bltu	a5,a4,a0a <free+0x42>
+/home/one/xv6-labs-2020/user/umalloc.c:33
+ a1a:	ff852583          	lw	a1,-8(a0)
+ a1e:	6390                	ld	a2,0(a5)
+ a20:	02059713          	slli	a4,a1,0x20
+ a24:	9301                	srli	a4,a4,0x20
+ a26:	0712                	slli	a4,a4,0x4
+ a28:	9736                	add	a4,a4,a3
+ a2a:	fae60ae3          	beq	a2,a4,9de <free+0x16>
+/home/one/xv6-labs-2020/user/umalloc.c:37
+ a2e:	fec53823          	sd	a2,-16(a0)
+/home/one/xv6-labs-2020/user/umalloc.c:38
+ a32:	4790                	lw	a2,8(a5)
+ a34:	02061713          	slli	a4,a2,0x20
+ a38:	9301                	srli	a4,a4,0x20
+ a3a:	0712                	slli	a4,a4,0x4
+ a3c:	973e                	add	a4,a4,a5
+ a3e:	fae689e3          	beq	a3,a4,9f0 <free+0x28>
+/home/one/xv6-labs-2020/user/umalloc.c:42
+ a42:	e394                	sd	a3,0(a5)
+/home/one/xv6-labs-2020/user/umalloc.c:43
+ a44:	00000717          	auipc	a4,0x0
+ a48:	16f73223          	sd	a5,356(a4) # ba8 <__DATA_BEGIN__>
+/home/one/xv6-labs-2020/user/umalloc.c:44
+ a4c:	6422                	ld	s0,8(sp)
+ a4e:	0141                	addi	sp,sp,16
+ a50:	8082                	ret
+
+0000000000000a52 <malloc>:
+malloc():
+/home/one/xv6-labs-2020/user/umalloc.c:65
+ a52:	7139                	addi	sp,sp,-64
+ a54:	fc06                	sd	ra,56(sp)
+ a56:	f822                	sd	s0,48(sp)
+ a58:	f426                	sd	s1,40(sp)
+ a5a:	f04a                	sd	s2,32(sp)
+ a5c:	ec4e                	sd	s3,24(sp)
+ a5e:	e852                	sd	s4,16(sp)
+ a60:	e456                	sd	s5,8(sp)
+ a62:	e05a                	sd	s6,0(sp)
+ a64:	0080                	addi	s0,sp,64
+/home/one/xv6-labs-2020/user/umalloc.c:69
+ a66:	02051993          	slli	s3,a0,0x20
+ a6a:	0209d993          	srli	s3,s3,0x20
+ a6e:	09bd                	addi	s3,s3,15
+ a70:	0049d993          	srli	s3,s3,0x4
+ a74:	2985                	addiw	s3,s3,1
+ a76:	0009891b          	sext.w	s2,s3
+/home/one/xv6-labs-2020/user/umalloc.c:70
+ a7a:	00000797          	auipc	a5,0x0
+ a7e:	12e78793          	addi	a5,a5,302 # ba8 <__DATA_BEGIN__>
+ a82:	6388                	ld	a0,0(a5)
+ a84:	c515                	beqz	a0,ab0 <malloc+0x5e>
+/home/one/xv6-labs-2020/user/umalloc.c:74
+ a86:	611c                	ld	a5,0(a0)
+/home/one/xv6-labs-2020/user/umalloc.c:75
+ a88:	4798                	lw	a4,8(a5)
+ a8a:	03277f63          	bgeu	a4,s2,ac8 <malloc+0x76>
+ a8e:	8a4e                	mv	s4,s3
+ a90:	0009871b          	sext.w	a4,s3
+ a94:	6685                	lui	a3,0x1
+ a96:	00d77363          	bgeu	a4,a3,a9c <malloc+0x4a>
+ a9a:	6a05                	lui	s4,0x1
+ a9c:	000a0a9b          	sext.w	s5,s4
+morecore():
+/home/one/xv6-labs-2020/user/umalloc.c:54
+ aa0:	004a1a1b          	slliw	s4,s4,0x4
+malloc():
+/home/one/xv6-labs-2020/user/umalloc.c:86
+ aa4:	00000497          	auipc	s1,0x0
+ aa8:	10448493          	addi	s1,s1,260 # ba8 <__DATA_BEGIN__>
+morecore():
+/home/one/xv6-labs-2020/user/umalloc.c:55
+ aac:	5b7d                	li	s6,-1
+ aae:	a885                	j	b1e <malloc+0xcc>
+malloc():
+/home/one/xv6-labs-2020/user/umalloc.c:71
+ ab0:	00000797          	auipc	a5,0x0
+ ab4:	11078793          	addi	a5,a5,272 # bc0 <base>
+ ab8:	00000717          	auipc	a4,0x0
+ abc:	0ef73823          	sd	a5,240(a4) # ba8 <__DATA_BEGIN__>
+ ac0:	e39c                	sd	a5,0(a5)
+/home/one/xv6-labs-2020/user/umalloc.c:72
+ ac2:	0007a423          	sw	zero,8(a5)
+/home/one/xv6-labs-2020/user/umalloc.c:75
+ ac6:	b7e1                	j	a8e <malloc+0x3c>
+/home/one/xv6-labs-2020/user/umalloc.c:76
+ ac8:	02e90b63          	beq	s2,a4,afe <malloc+0xac>
+/home/one/xv6-labs-2020/user/umalloc.c:79
+ acc:	4137073b          	subw	a4,a4,s3
+ ad0:	c798                	sw	a4,8(a5)
+/home/one/xv6-labs-2020/user/umalloc.c:80
+ ad2:	1702                	slli	a4,a4,0x20
+ ad4:	9301                	srli	a4,a4,0x20
+ ad6:	0712                	slli	a4,a4,0x4
+ ad8:	97ba                	add	a5,a5,a4
+/home/one/xv6-labs-2020/user/umalloc.c:81
+ ada:	0137a423          	sw	s3,8(a5)
+/home/one/xv6-labs-2020/user/umalloc.c:83
+ ade:	00000717          	auipc	a4,0x0
+ ae2:	0ca73523          	sd	a0,202(a4) # ba8 <__DATA_BEGIN__>
+/home/one/xv6-labs-2020/user/umalloc.c:84
+ ae6:	01078513          	addi	a0,a5,16
+/home/one/xv6-labs-2020/user/umalloc.c:90
+ aea:	70e2                	ld	ra,56(sp)
+ aec:	7442                	ld	s0,48(sp)
+ aee:	74a2                	ld	s1,40(sp)
+ af0:	7902                	ld	s2,32(sp)
+ af2:	69e2                	ld	s3,24(sp)
+ af4:	6a42                	ld	s4,16(sp)
+ af6:	6aa2                	ld	s5,8(sp)
+ af8:	6b02                	ld	s6,0(sp)
+ afa:	6121                	addi	sp,sp,64
+ afc:	8082                	ret
+/home/one/xv6-labs-2020/user/umalloc.c:77
+ afe:	6398                	ld	a4,0(a5)
+ b00:	e118                	sd	a4,0(a0)
+ b02:	bff1                	j	ade <malloc+0x8c>
+morecore():
+/home/one/xv6-labs-2020/user/umalloc.c:58
+ b04:	01552423          	sw	s5,8(a0)
+/home/one/xv6-labs-2020/user/umalloc.c:59
+ b08:	0541                	addi	a0,a0,16
+ b0a:	00000097          	auipc	ra,0x0
+ b0e:	ebe080e7          	jalr	-322(ra) # 9c8 <free>
+/home/one/xv6-labs-2020/user/umalloc.c:60
+ b12:	6088                	ld	a0,0(s1)
+malloc():
+/home/one/xv6-labs-2020/user/umalloc.c:87
+ b14:	d979                	beqz	a0,aea <malloc+0x98>
+/home/one/xv6-labs-2020/user/umalloc.c:74
+ b16:	611c                	ld	a5,0(a0)
+/home/one/xv6-labs-2020/user/umalloc.c:75
+ b18:	4798                	lw	a4,8(a5)
+ b1a:	fb2777e3          	bgeu	a4,s2,ac8 <malloc+0x76>
+/home/one/xv6-labs-2020/user/umalloc.c:86
+ b1e:	6098                	ld	a4,0(s1)
+ b20:	853e                	mv	a0,a5
+ b22:	fef71ae3          	bne	a4,a5,b16 <malloc+0xc4>
+morecore():
+/home/one/xv6-labs-2020/user/umalloc.c:54
+ b26:	8552                	mv	a0,s4
+ b28:	00000097          	auipc	ra,0x0
+ b2c:	b7c080e7          	jalr	-1156(ra) # 6a4 <sbrk>
+/home/one/xv6-labs-2020/user/umalloc.c:55
+ b30:	fd651ae3          	bne	a0,s6,b04 <malloc+0xb2>
+malloc():
+/home/one/xv6-labs-2020/user/umalloc.c:88
+ b34:	4501                	li	a0,0
+ b36:	bf55                	j	aea <malloc+0x98>
