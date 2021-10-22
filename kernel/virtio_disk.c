@@ -8,10 +8,10 @@
 
 #include "types.h"
 #include "riscv.h"
+#include "spinlock.h"
 #include "defs.h"
 #include "param.h"
 #include "memlayout.h"
-#include "spinlock.h"
 #include "sleeplock.h"
 #include "fs.h"
 #include "buf.h"

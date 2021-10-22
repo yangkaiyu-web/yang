@@ -2,6 +2,7 @@
 #include "param.h"
 #include "memlayout.h"
 #include "riscv.h"
+#include "spinlock.h"
 #include "defs.h"
 
 volatile static int started = 0;

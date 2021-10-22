@@ -1,10 +1,10 @@
 #include "types.h"
 #include "riscv.h"
+#include "spinlock.h"
 #include "defs.h"
 #include "date.h"
 #include "param.h"
 #include "memlayout.h"
-#include "spinlock.h"
 #include "proc.h"
 
 uint64

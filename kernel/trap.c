@@ -10,6 +10,7 @@ struct spinlock tickslock;
 uint ticks;
 
 extern char trampoline[], uservec[], userret[];
+extern struct ref_count ref_cnt;
 
 // in kernelvec.S, calls kerneltrap().
 void kernelvec();
@@ -65,6 +66,34 @@ usertrap(void)
     intr_on();
 
     syscall();
+  } else if(r_scause() == 13 || r_scause() == 15){
+    struct proc* p = myproc();
+    uint64 badaddr = r_stval();
+    pte_t *pte = walk(p->pagetable,badaddr,0);
+    if(((*pte) & PTE_RSW) == PTE_RSW)
+    {
+      uint64 original_pa = PTE2PA(*pte);
+      uint64 pa;
+      if((pa = (uint64)kalloc()) == 0)
+      {
+        p->killed = 1;
+        goto kill;
+      }
+      memmove((void*)pa,(const void*)original_pa,PGSIZE);
+
+      acquire(&ref_cnt.lock);
+      uvmunmap(p->pagetable,badaddr,1,0);
+      ref_cnt.count_arr[original_pa/PGSIZE] -= 1;
+      if(ref_cnt.count_arr[original_pa/PGSIZE] == 0) {
+        kfree((void*)original_pa);
+      }
+      
+      mappages(p->pagetable,badaddr,PGSIZE,pa,PTE_FLAGS(*pte) | PTE_W | (~PTE_RSW));
+      ref_cnt.count_arr[pa/PGSIZE] = 1;
+      release(&ref_cnt.lock);
+    }
+    else
+      panic("page fault trap!");
   } else if((which_dev = devintr()) != 0){
     // ok
   } else {
@@ -73,6 +102,7 @@ usertrap(void)
     p->killed = 1;
   }
 
+kill:
   if(p->killed)
     exit(-1);
 
