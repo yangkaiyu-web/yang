@@ -2,6 +2,8 @@
     "files.associations": {
         "defs.h": "c",
         "types.h": "c",
-        "proc.h": "c"
+        "proc.h": "c",
+        "memlayout.h": "c",
+        "param.h": "c"
     }
 }

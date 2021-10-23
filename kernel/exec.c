@@ -142,7 +142,34 @@ loadseg(pagetable_t pagetable, uint64 va, struct inode *ip, uint offset, uint sz
     panic("loadseg: va must be page aligned");
 
   for(i = 0; i < sz; i += PGSIZE){
-    pa = walkaddr(pagetable, va + i);
+    pte_t *pte;
+
+    if(va >= MAXVA)
+      return 0;
+
+    pte = walk(pagetable, va + i, 0);
+    if(pte == 0)
+      return -1;
+    if((*pte & PTE_V) == 0)
+      return -1;
+    if((*pte & PTE_U) == 0)
+      return -1;
+    pa = PTE2PA(*pte);
+    if((*pte & PTE_RSW) == PTE_RSW)
+    {
+      int perm = PTE_FLAGS(*pte);
+      uint64 pa0;
+      if((pa0 = (uint64)kalloc()) == 0)
+        return -1;
+      
+      memmove((void*)pa0,(const void*)pa,PGSIZE);
+      
+      uvmunmap(pagetable, va + i, 1, 1);
+      
+      mappages(pagetable, va + i, PGSIZE, pa, (perm | PTE_W) & (~PTE_RSW), 1);
+      pa = pa0;
+    }
+
     if(pa == 0)
       panic("loadseg: address should exist");
     if(sz - i < PGSIZE)

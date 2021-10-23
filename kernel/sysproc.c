@@ -1,10 +1,10 @@
 #include "types.h"
 #include "riscv.h"
+#include "memlayout.h"
 #include "spinlock.h"
 #include "defs.h"
 #include "date.h"
 #include "param.h"
-#include "memlayout.h"
 #include "proc.h"
 
 uint64
@@ -47,8 +47,9 @@ sys_sbrk(void)
   if(argint(0, &n) < 0)
     return -1;
   addr = myproc()->sz;
-  if(growproc(n) < 0)
+  if(growproc(n) < 0){
     return -1;
+  }
   return addr;
 }
 

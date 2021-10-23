@@ -11,8 +11,6 @@
 
 void freerange(void *pa_start, void *pa_end);
 
-extern char end[]; // first address after kernel.
-                   // defined by kernel.ld.
 
 struct ref_count ref_cnt;
 
@@ -37,8 +35,12 @@ freerange(void *pa_start, void *pa_end)
 {
   char *p;
   p = (char*)PGROUNDUP((uint64)pa_start);
-  for(; p + PGSIZE <= (char*)pa_end; p += PGSIZE)
+  for(; p + PGSIZE <= (char*)pa_end; p += PGSIZE){
+    acquire(&ref_cnt.lock);
+    ref_cnt.count_arr[REF_INDEX((uint64)p)] = 0;
+    release(&ref_cnt.lock);
     kfree(p);
+  }
 }
 
 // Free the page of physical memory pointed at by v,
@@ -62,6 +64,7 @@ kfree(void *pa)
   r->next = kmem.freelist;
   kmem.freelist = r;
   release(&kmem.lock);
+
 }
 
 // Allocate one 4096-byte page of physical memory.
@@ -77,7 +80,6 @@ kalloc(void)
   if(r)
     kmem.freelist = r->next;
   release(&kmem.lock);
-
   if(r)
     memset((char*)r, 5, PGSIZE); // fill with junk
   return (void*)r;

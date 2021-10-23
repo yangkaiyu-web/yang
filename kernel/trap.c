@@ -69,7 +69,14 @@ usertrap(void)
   } else if(r_scause() == 13 || r_scause() == 15){
     struct proc* p = myproc();
     uint64 badaddr = r_stval();
+
     pte_t *pte = walk(p->pagetable,badaddr,0);
+    if(pte == 0 || (*pte) == 0)
+    {
+      p->killed = 1;
+      goto kill;
+    }
+    int perm = PTE_FLAGS(*pte);
     if(((*pte) & PTE_RSW) == PTE_RSW)
     {
       uint64 original_pa = PTE2PA(*pte);
@@ -80,20 +87,18 @@ usertrap(void)
         goto kill;
       }
       memmove((void*)pa,(const void*)original_pa,PGSIZE);
-
-      acquire(&ref_cnt.lock);
-      uvmunmap(p->pagetable,badaddr,1,0);
-      ref_cnt.count_arr[original_pa/PGSIZE] -= 1;
-      if(ref_cnt.count_arr[original_pa/PGSIZE] == 0) {
-        kfree((void*)original_pa);
-      }
       
-      mappages(p->pagetable,badaddr,PGSIZE,pa,PTE_FLAGS(*pte) | PTE_W | (~PTE_RSW));
-      ref_cnt.count_arr[pa/PGSIZE] = 1;
-      release(&ref_cnt.lock);
+      uvmunmap(p->pagetable,PGROUNDDOWN(badaddr),1,1);
+      
+      mappages(p->pagetable,PGROUNDDOWN(badaddr),PGSIZE,pa,(perm | PTE_W) & (~PTE_RSW), 1);
     }
+    else if(((*pte) & PTE_U) == 0)
+      p->killed = 1;
     else
+    {
+      printf("badaddr:%p, *pte:%p\n",badaddr,*pte);
       panic("page fault trap!");
+    }
   } else if((which_dev = devintr()) != 0){
     // ok
   } else {
@@ -167,7 +172,13 @@ kerneltrap()
   uint64 sepc = r_sepc();
   uint64 sstatus = r_sstatus();
   uint64 scause = r_scause();
-  
+
+  if(scause == 13 || scause == 15)
+  {
+    myproc()->killed = 1;
+    return;
+  }
+
   if((sstatus & SSTATUS_SPP) == 0)
     panic("kerneltrap: not from supervisor mode");
   if(intr_get() != 0)

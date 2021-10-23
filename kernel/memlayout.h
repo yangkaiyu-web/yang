@@ -1,3 +1,5 @@
+#ifndef _MEMLAYOUT_H_
+#define _MEMLAYOUT_H_
 // Physical memory layout
 
 // qemu -machine virt is set up like this,
@@ -18,6 +20,9 @@
 // PHYSTOP -- end RAM used by the kernel
 
 // qemu puts UART registers here in physical memory.
+extern char end[];// first address after kernel.
+                   // defined by kernel.ld.
+
 #define UART0 0x10000000L
 #define UART0_IRQ 10
 
@@ -46,6 +51,8 @@
 // from physical address 0x80000000 to PHYSTOP.
 #define KERNBASE 0x80000000L
 #define PHYSTOP (KERNBASE + 128*1024*1024)
+#define MAX_REF (128*1024*1024/PGSIZE)
+#define REF_INDEX(PA) (((PA)-KERNBASE)/PGSIZE)
 
 // map the trampoline page to the highest address,
 // in both user and kernel space.
@@ -65,3 +72,5 @@
 //   TRAPFRAME (p->trapframe, used by the trampoline)
 //   TRAMPOLINE (the same page as in the kernel)
 #define TRAPFRAME (TRAMPOLINE - PGSIZE)
+
+#endif
