@@ -19,6 +19,7 @@ exec(char *path, char **argv)
   struct inode *ip;
   struct proghdr ph;
   pagetable_t pagetable = 0, oldpagetable;
+
   struct proc *p = myproc();
 
   begin_op();
@@ -64,6 +65,8 @@ exec(char *path, char **argv)
   p = myproc();
   uint64 oldsz = p->sz;
 
+  
+
   // Allocate two pages at the next page boundary.
   // Use the second as the user stack.
   sz = PGROUNDUP(sz);
@@ -107,7 +110,7 @@ exec(char *path, char **argv)
     if(*s == '/')
       last = s+1;
   safestrcpy(p->name, last, sizeof(p->name));
-    
+
   // Commit to the user image.
   oldpagetable = p->pagetable;
   p->pagetable = pagetable;
@@ -116,9 +119,16 @@ exec(char *path, char **argv)
   p->trapframe->sp = sp; // initial stack pointer
   proc_freepagetable(oldpagetable, oldsz);
 
+  sync_pagetable(p->pagetable, p->kpagetable, oldsz, p->sz, 0);
+
+  if (p->pid == 1) {
+    vmprint(p->pagetable);
+  }
+
   return argc; // this ends up in a0, the first argument to main(argc, argv)
 
  bad:
+//  printf("[exec]: bad\n");
   if(pagetable)
     proc_freepagetable(pagetable, sz);
   if(ip){
@@ -137,6 +147,9 @@ loadseg(pagetable_t pagetable, uint64 va, struct inode *ip, uint offset, uint sz
 {
   uint i, n;
   uint64 pa;
+  
+  if(va + sz >= PROCLIMIT)
+    return -1;
 
   if((va % PGSIZE) != 0)
     panic("loadseg: va must be page aligned");

@@ -40,6 +40,7 @@ procinit(void)
       uint64 va = KSTACK((int) (p - proc));
       kvmmap(va, (uint64)pa, PGSIZE, PTE_R | PTE_W);
       p->kstack = va;
+      p->pkstack = (uint64)pa;
   }
   kvminithart();
 }
@@ -113,13 +114,21 @@ found:
     return 0;
   }
 
-  // An empty user page table.
+  // An empty user page table,
+  // and an kernel page table.
   p->pagetable = proc_pagetable(p);
-  if(p->pagetable == 0){
+
+  // printf("[allocproc]: before new_kpagetable\n");
+
+  p->kpagetable = new_kpagetable();
+
+  if(p->pagetable == 0 || p->kpagetable == 0){
     freeproc(p);
     release(&p->lock);
     return 0;
   }
+
+  kvmmap_(p->kpagetable, p->kstack, p->pkstack, PGSIZE, PTE_R | PTE_W);
 
   // Set up new context to start executing at forkret,
   // which returns to user space.
@@ -141,6 +150,9 @@ freeproc(struct proc *p)
   p->trapframe = 0;
   if(p->pagetable)
     proc_freepagetable(p->pagetable, p->sz);
+  if(p->kpagetable) 
+    kvmfree(p->kpagetable, p->sz);
+
   p->pagetable = 0;
   p->sz = 0;
   p->pid = 0;
@@ -219,6 +231,8 @@ userinit(void)
   // allocate one user page and copy init's instructions
   // and data into it.
   uvminit(p->pagetable, initcode, sizeof(initcode));
+  sync_pagetable(p->pagetable, p->kpagetable, 0, PGSIZE, 0);
+
   p->sz = PGSIZE;
 
   // prepare for the very first "return" from kernel to user.
@@ -242,6 +256,9 @@ growproc(int n)
   struct proc *p = myproc();
 
   sz = p->sz;
+
+  // printf("[growproc]: target size: %d\n", sz + n);
+
   if(n > 0){
     if((sz = uvmalloc(p->pagetable, sz, sz + n)) == 0) {
       return -1;
@@ -249,6 +266,9 @@ growproc(int n)
   } else if(n < 0){
     sz = uvmdealloc(p->pagetable, sz, sz + n);
   }
+
+  sync_pagetable(p->pagetable, p->kpagetable, p->sz, sz, 1);
+  
   p->sz = sz;
   return 0;
 }
@@ -268,7 +288,7 @@ fork(void)
   }
 
   // Copy user memory from parent to child.
-  if(uvmcopy(p->pagetable, np->pagetable, p->sz) < 0){
+  if(uvmcopy(p->pagetable, np->pagetable, p->sz) < 0 || sync_pagetable(np->pagetable, np->kpagetable, 0, p->sz, 0) < 0){
     freeproc(np);
     release(&np->lock);
     return -1;
@@ -473,8 +493,13 @@ scheduler(void)
         // before jumping back to us.
         p->state = RUNNING;
         c->proc = p;
+
+        w_satp(MAKE_SATP(p->kpagetable));
+        sfence_vma();
+
         swtch(&c->context, &p->context);
 
+        kvminithart();
         // Process is done running for now.
         // It should have changed its p->state before coming back.
         c->proc = 0;
@@ -486,6 +511,7 @@ scheduler(void)
 #if !defined (LAB_FS)
     if(found == 0) {
       intr_on();
+      kvminithart();
       asm volatile("wfi");
     }
 #else
