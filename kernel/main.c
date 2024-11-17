@@ -14,7 +14,15 @@ main()
     consoleinit();
     printfinit();
     printf("\n");
-    printf("xv6 kernel is booting\n");
+    printf("\033[0;31m");
+    printf("OS kernel is booting\n");
+    printf("|\\      /| \\     /      |----  -   ----    ----   -------       ------    ----\n");
+    printf("| \\    / |  \\   /       |      |   |   \\  |          |         |      |  |\n");
+    printf("|  \\  /  |   \\ /        |----  |   |   /  |          |         |      |  |\n");
+    printf("|   \\/   |    |         |      |   ----    ----      |         |      |   ----\n");
+    printf("|        |    |         |      |   |   \\       |     |         |      |       |\n");
+    printf("|        |    |         |      |   |    \\      |     |         |      |       |\n");
+    printf("|        |    |         |      _   |     \\ ----      |          ------    ----\n");
     printf("\n");
     kinit();         // physical page allocator
     kvminit();       // create kernel page table
